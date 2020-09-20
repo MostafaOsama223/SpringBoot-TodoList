@@ -11,11 +11,11 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer itemId;
-    private String header;
+    private String itemHeader;
     private String description;
-    private String priority;
-    private String[] label;
-    private boolean completed;
+    private String itemPriority;
+    private String[] itemLabel;
+    private boolean itemCompleted;
 
     // @OneToOne
     // Lista list;
@@ -26,18 +26,18 @@ public class Item {
 
     public Item(Item item){
         this.itemId = item.itemId;
-        this.header = item.header;
-        this.priority = item.priority;
-        this.label = item.label;
-        this.completed = item.completed;
+        this.itemHeader = item.itemHeader;
+        this.itemPriority = item.itemPriority;
+        this.itemLabel = item.itemLabel;
+        this.itemCompleted = item.itemCompleted;
     }
 
-    public Item(Integer itemId, String header, String description, String priority, String[] label, boolean completed){
+    public Item(Integer itemId, String itemHeader, String description, String itemPriority, String[] itemLabel, boolean itemCompleted){
         this.itemId = itemId;
-        this.header = header;
-        this.priority = priority;
-        this.label = label;
-        this.completed = completed;
+        this.itemHeader = itemHeader;
+        this.itemPriority = itemPriority;
+        this.itemLabel = itemLabel;
+        this.itemCompleted = itemCompleted;
     }
 
 
@@ -45,52 +45,52 @@ public class Item {
         this.itemId = itemId;
     }
 
-    public void setHeader(String header){
-        this.header = header;
+    public void setHeader(String itemHeader){
+        this.itemHeader = itemHeader;
     }
 
     public void setDescription(String description){
         this.description = description;
     }
 
-    public void setPriority(String priority){
-        this.priority = priority;
+    public void setPriority(String itemPriority){
+        this.itemPriority = itemPriority;
     }
 
-    public void setLabel(String[] label){
-        this.label = label;
+    public void setLabel(String[] itemLabel){
+        this.itemLabel = itemLabel;
     }
 
-    public void setCompleted(boolean completed){
-        this.completed = completed;
+    public void setCompleted(boolean itemCompleted){
+        this.itemCompleted = itemCompleted;
     }
 
     // public void setLista(Lista list){
     //     this.list = list;
     // }
 
-    public Integer getitemId(){
-        return itemId;
+    public Integer getItemId(){
+        return this.itemId;
     }
 
-    public String getHeader(){
-        return header;
+    public String getItemHeader(){
+        return this.itemHeader;
     }
 
-    public String getDescription(){
-        return description;
+    public String getItemDescription(){
+        return this.description;
     }
 
-    public String getPriority(){
-        return priority;
+    public String getItemPriority(){
+        return this.itemPriority;
     }
 
-    public String[] getLabel(){
-        return label;
+    public String[] getItemLabel(){
+        return this.itemLabel;
     }
 
-    public boolean getCompleted(){
-        return completed;
+    public boolean getItemCompleted(){
+        return this.itemCompleted;
     }
 
     // public Lista getLista(){

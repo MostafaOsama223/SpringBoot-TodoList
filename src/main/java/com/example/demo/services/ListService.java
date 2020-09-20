@@ -1,6 +1,7 @@
 package com.example.demo.services;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import com.example.demo.entities.Lista;
@@ -9,6 +10,7 @@ import com.example.demo.entities.Item;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class ListService {
@@ -22,8 +24,8 @@ public class ListService {
         return lists;
     }
 
-    public Lista getList(Integer id) {
-        return listRepo.findById(id).get();
+    public Lista getList(Integer listId) {
+        return listRepo.findById(listId).get();
     }
 
     public Lista addList(Lista List) {
@@ -36,11 +38,33 @@ public class ListService {
         ArrayList<Item> newItems = new ArrayList<>();
         newItems.add(itemDetails);
         // System.out.println("A");
-        newItems.addAll(parentList.getItem());
+        newItems.addAll(parentList.getItems());
         // System.out.println("B");
-        listRepo.save(new Lista(listId, parentList.getName(), newItems));
+        listRepo.save(new Lista(listId, parentList.getListHeader(), newItems));
         // System.out.println("C");
         return getList(listId);
+    }
+
+    public Integer deleteList(Integer listId){
+        listRepo.deleteById(listId);
+        return listId;
+    }
+
+    public Integer deleteItem(Integer listId, Integer itemId){
+        Lista newList = listRepo.findById(listId).get();
+        List<Item> newItems = new LinkedList<>();
+        for (Item item : newList.getItems()) {
+            if(item.getItemId() != itemId) newItems.add(item);
+        }
+        newList.setItems(newItems);
+        listRepo.save(newList);
+        return itemId;
+    }
+
+    public Lista truncateList(Integer listId){
+        Lista newList = listRepo.findById(listId).get();
+        newList.setItems(new LinkedList<>());
+        return listRepo.save(newList);
     }
 
 }
