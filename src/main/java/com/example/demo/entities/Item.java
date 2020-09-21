@@ -12,7 +12,7 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer itemId;
     private String itemHeader;
-    private String description;
+    private String itemDescription;
     private String itemPriority;
     private String[] itemLabel;
     private boolean itemCompleted;
@@ -49,8 +49,8 @@ public class Item {
         this.itemHeader = itemHeader;
     }
 
-    public void setDescription(String description){
-        this.description = description;
+    public void setItemDescription(String itemDescription){
+        this.itemDescription = itemDescription;
     }
 
     public void setPriority(String itemPriority){
@@ -78,7 +78,7 @@ public class Item {
     }
 
     public String getItemDescription(){
-        return this.description;
+        return this.itemDescription;
     }
 
     public String getItemPriority(){

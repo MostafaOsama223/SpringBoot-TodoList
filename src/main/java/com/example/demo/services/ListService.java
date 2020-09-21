@@ -36,12 +36,9 @@ public class ListService {
     public Lista addItem(Item itemDetails, Integer listId) {
         Lista parentList = listRepo.findById(listId).get();
         ArrayList<Item> newItems = new ArrayList<>();
-        newItems.add(itemDetails);
-        // System.out.println("A");
         newItems.addAll(parentList.getItems());
-        // System.out.println("B");
+        newItems.add(itemDetails);
         listRepo.save(new Lista(listId, parentList.getListHeader(), newItems));
-        // System.out.println("C");
         return getList(listId);
     }
 
